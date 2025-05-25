@@ -30,6 +30,7 @@ t_command *create_command(char *cmd) {
     // {}
     int len = get_len(tokens);
     new_node->command = strdup(tokens[0]);
+    new_node->arguments = NULL;
     if (len > 1)
     {
         new_node->arguments = malloc(sizeof(char *) * (ft_split_size(tokens) + 1));
@@ -43,6 +44,7 @@ t_command *create_command(char *cmd) {
             new_node->arguments[i] = strdup(tokens[i]);
             i++;
         }
+        new_node->arguments[i] = NULL;
     }
     new_node->next = NULL;
     free_split(tokens);

@@ -1,7 +1,7 @@
 # Compiler and flags
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
-LDFLAGS = -lreadline -Llibft -lft
+CFLAGS = -Wall -Wextra -Werror -g
+LDFLAGS = -lreadline -Llibft -lft -fsanitize=address
 
 # Directories
 LIBFT_DIR = libft
@@ -21,9 +21,8 @@ SRC = src/main.c \
 	  src/special_commands/execute_cd.c\
 	  src/special_commands/execute_echo.c\
 	  src/pipes/handle_pipes.c\
-	  src/redirect/handle_append.c\
-	  src/redirect/handle_output.c\
-	  src/pipes/utils.c
+	  builtins/env.c  builtins/export.c  builtins/export_utils.c \
+	  src/executor.c
 
 # Object files
 OBJ = $(SRC:.c=.o)
